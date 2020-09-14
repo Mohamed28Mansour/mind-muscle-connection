@@ -44,7 +44,61 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
+const session = require('express-session');
+const MongoStore = require ('connect-mongo')(session);
 
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: {maxAge: 24 * 60 * 60 * 1000},
+    saveUninitialized: false,
+    resave: true,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection, 
+      ttl: 24 * 60 * 60 * 1000
+    })
+  })
+)
+
+const User = require('./models/User');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+
+passport.serializeUser((user, done) => {
+  done(null, user._id);
+})
+
+passport.deserializeUser((id, done) => {
+  User.findById(id)
+  .then(dbUser => {
+    done(null, dbUser);
+  })
+  .catch(err => {
+    done(err);
+  })
+})
+
+passport.use(
+  new LocalStrategy((username, password, done) => {
+    User.findOne({username: username})
+    .then(found => {
+      if (found === null) {
+        done(null, false, {message: 'Incorrect Credentials'})
+      } else if (!bcrypt.compareSync(password, found.password)) {
+        done(null, false, {message: 'Incorrect Credentials'})
+      } else {
+        done (null, found)
+      }
+    })
+    .catch(err => {
+      done(err, false)
+    })
+  })
+)
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
