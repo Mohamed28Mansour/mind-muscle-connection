@@ -15,4 +15,11 @@ router.get('/dashboard', (req, res, next) => {
 });
 
 
+
+router.get('/dashboard', (req, res, next) => {
+  console.log(req.params.role);
+  
+})
+
+
 module.exports = router;
