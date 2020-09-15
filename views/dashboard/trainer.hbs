@@ -1,5 +1,17 @@
-<h1>Welcome {{username}}</h1>
+<h1>Welcome {{user.username}}</h1>
 
 <h2>Plans:</h2>
 
-<button><a href="/trainer">Create a plan</a></button>
+{{#if user.programs}}
+{{#each user.programs}}
+  <p>
+    <a href="/plans/{{_id}}">{{title}}</a>
+  </p>
+  <button><a href="/plans/edit/{{_id}}"></a>Edit Plan</button>
+  <button><a href="/plans/delete/{{_id}}"></a>Delete Plan</button>
+{{/each}}
+{{else}}
+  <p>No plans available</p>
+{{/if}}
+
+<button><a href="/plans">Create a plan</a></button>
