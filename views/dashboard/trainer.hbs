@@ -5,10 +5,10 @@
 {{#if user.programs}}
 {{#each user.programs}}
   <p>
-    <a href="/plans/{{_id}}">{{title}}</a>
+    <a href="/plans/{{plan._id}}">{{plan.planName}}</a>
   </p>
-  <button><a href="/plans/edit/{{_id}}"></a>Edit Plan</button>
-  <button><a href="/plans/delete/{{_id}}"></a>Delete Plan</button>
+  <button><a href="/plans/edit/{{plan._id}}"></a>Edit Plan</button>
+  <button><a href="/plans/delete/{{plan._id}}"></a>Delete Plan</button>
 {{/each}}
 {{else}}
   <p>No plans available</p>
