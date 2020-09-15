@@ -3,6 +3,7 @@ const router  = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
+const Plan = require('../models/Plan');
 
 
 router.get('/signup', (req, res, next) => {
@@ -44,6 +45,8 @@ router.post('/signup', (req, res, next) => {
       }
     })
 })
+
+
 
 // router.post('/login', (req, res, next) => {
 //   const {username, password} = req.body;

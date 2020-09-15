@@ -1,0 +1,40 @@
+<h1>Plans</h1>
+
+<form action="/plans" method="POST">
+<div id="exParent">
+  <label for="planname">Plan:</label>
+  <input type="text" name="planName" id="planName">
+
+  <div id="ex">
+    <label for="exercise">Exercise</label>
+    <input type="text" name="exercise" id="exercise">
+    
+    <div id="set">
+    <label for="reps">Reps</label>
+    <input type="text" name="reps1" id="reps1">
+    <label for="reps">Reps</label>
+    <input type="text" name="reps2" id="reps2">
+    </div>
+
+  </div>
+</div>
+<div>
+  {{!-- <button id="addSet">Add another Set</button> --}}
+  <button type="button" id="addExercise">Add another exercise</button>
+  <button type="submit">Done</button>
+</div>
+</form>
+
+<script>
+  let addExercise = document.querySelector("#addExercise")
+  let divEX = document.querySelector("#ex")
+  let exParent = document.querySelector("#exParent")
+
+  addExercise.addEventListener("click", () => {
+    var clone = divEX.cloneNode(true);
+    clone.querySelector("#exercise").value = ""
+    clone.querySelector("#reps1").value = ""
+    clone.querySelector("#reps2").value = ""
+    exParent.appendChild(clone)
+  })
+</script>

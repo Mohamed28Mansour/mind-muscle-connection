@@ -1,9 +1,11 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const planSchema = new Schema ({
-  name = String,
-  img = String,
-  reps = Number,
+  planName:  String,
+  img: String,
+  reps1: String,
+  reps2: String,
+  reps3: String
 })
 
 const Plan = mongoose.model('Plan', planSchema)
