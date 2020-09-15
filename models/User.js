@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema ({
   username: String,
   password: String,
+  level: {
+    type: String,
+    enum: ['beginner', 'intermediate', 'advance']
+  },
   gender: {
     type: String,
     enum: ['female', 'male']
