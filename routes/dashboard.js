@@ -9,19 +9,16 @@ const passport = require('passport');
 
 router.get('/dashboard', (req, res, next) => {
   console.log(req.user.role)
-  if(req.user.role == "trainer") {
-  res.render('dashboard/trainer', {user: req.user});
+  if(req.user.role == "Trainer") {
+    res.render('dashboard/trainer', {user: req.user});
   } else {
     res.render('dashboard/trainee', {user: req.user});
-    }
+  }
 });
 
 
 
-router.get('/dashboard', (req, res, next) => {
-  console.log(req.params.role);
-  
-})
+
 
 
 module.exports = router;
