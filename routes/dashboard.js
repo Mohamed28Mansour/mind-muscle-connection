@@ -17,7 +17,7 @@ router.get('/dashboard', (req, res, next) => {
 
 
 router.get('/dashboard', (req, res, next) => {
-  console.log(req.params.role);
+  console.log(req.user.role);
   
 })
 

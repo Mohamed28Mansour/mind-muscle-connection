@@ -5,10 +5,12 @@ const userSchema = new Schema ({
   lastName: String,
   password: String,
   gender: {
+    type: String,
     enum: ['female', 'male']
   },
   role: {
-    enum: ['trainer', 'trainee']
+    type: String,
+    enum: ['Trainer', 'Trainee']
   },
   programs: [
     {
