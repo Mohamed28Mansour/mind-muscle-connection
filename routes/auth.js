@@ -45,34 +45,34 @@ router.post('/signup', (req, res, next) => {
     })
 })
 
-router.post('/login', (req, res, next) => {
-  const {username, password} = req.body;
-  User.findOne({username:username})
-  .then(found => {
-    console.log('this is fiund',found.role)
-    if(found === null) {
-      res.render('auth/login', {message: 'Invalid Credentials'});
-    }
-     if (bcrypt.compareSync(password, found.password)){
-      if (found.role == 'Trainer'){
-        res.redirect('/dashboard/trainer')
-      } else 
-      if (found.role == 'Trainee'){
-        res.redirect('/dashboard/trainee')
-      }
-    } else {
-      res.render('auth/login', {message: 'Invalid Credentials'})
-    }
-  })
-  .catch(err => {
-    next(err)
-  })
-});
+// router.post('/login', (req, res, next) => {
+//   const {username, password} = req.body;
+//   User.findOne({username:username})
+//   .then(found => {
+//     console.log('this is fiund',found.role)
+//     if(found === null) {
+//       res.render('auth/login', {message: 'Invalid Credentials'});
+//     }
+//      if (bcrypt.compareSync(password, found.password)){
+//       if (found.role == 'Trainer'){
+//         res.redirect('/dashboard/trainer')
+//       } else 
+//       if (found.role == 'Trainee'){
+//         res.redirect('/dashboard/trainee')
+//       }
+//     } else {
+//       res.render('auth/login', {message: 'Invalid Credentials'})
+//     }
+//   })
+//   .catch(err => {
+//     next(err)
+//   })
+// });
 
 router.post(
   '/login',
   passport.authenticate('local', {
-    successRedirect: '/',
+    successRedirect: '/dashboard',
     failureRedirect: '/login',
     passReqToCallback: true
   })

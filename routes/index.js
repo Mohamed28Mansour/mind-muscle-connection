@@ -7,8 +7,4 @@ router.get('/', (req, res, next) => {
   res.render('index', {user: req.user});
 });
 
-router.get('/dashboard', loginCheck(), (req, res) => {
-  res.render('dashboard');
-})
-
 module.exports = router;
