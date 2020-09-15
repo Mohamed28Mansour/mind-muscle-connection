@@ -15,7 +15,7 @@ router.get('/login', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
 
-  const { username, password } = req.body;
+  const { username, password, role } = req.body;
 
   if (password.length < 8) {
     res.render('auth/signup', { message: 'Your password needs to be 8 chars min' });
@@ -35,7 +35,8 @@ router.post('/signup', (req, res, next) => {
 
         User.create({
           username: username,
-          password: hash
+          password: hash,
+          role: role
         })
           .then(dbUser => {
             res.redirect('/login');
@@ -44,10 +45,34 @@ router.post('/signup', (req, res, next) => {
     })
 })
 
+router.post('/login', (req, res, next) => {
+  const {username, password} = req.body;
+  User.findOne({username:username})
+  .then(found => {
+    console.log('this is fiund',found.role)
+    if(found === null) {
+      res.render('auth/login', {message: 'Invalid Credentials'});
+    }
+     if (bcrypt.compareSync(password, found.password)){
+      if (found.role == 'Trainer'){
+        res.redirect('/dashboard/trainer')
+      } else 
+      if (found.role == 'Trainee'){
+        res.redirect('/dashboard/trainee')
+      }
+    } else {
+      res.render('auth/login', {message: 'Invalid Credentials'})
+    }
+  })
+  .catch(err => {
+    next(err)
+  })
+});
+
 router.post(
   '/login',
   passport.authenticate('local', {
-    successRedirect: '/dashboard',
+    successRedirect: '/',
     failureRedirect: '/login',
     passReqToCallback: true
   })
