@@ -27,7 +27,6 @@ const userSchema = new Schema ({
       repetition: Number
     }
   ],
-
 })
 
 const User = mongoose.model('User', userSchema)
