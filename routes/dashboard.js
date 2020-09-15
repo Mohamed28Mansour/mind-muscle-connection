@@ -3,7 +3,7 @@ const router  = express.Router();
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
-
+const Plan = require('../models/Plan')
 
 
 
@@ -16,7 +16,24 @@ router.get('/dashboard', (req, res, next) => {
   }
 });
 
+router.get('/plans', (req, res, next) => {
+  res.render('dashboard/plans');
+});
 
+router.post('/plans', (req, res, next) => {
+  const {planName, reps1, reps2, reps3} = req.body;
+  Plan.create({
+    planName: planName,
+    reps1: reps1,
+    reps2: reps2,
+    reps3: reps3
+  })
+  .then(dbPlan => {
+    res.redirect('/dashboard')
+  }).catch(err => {
+    next(err)
+  })
+})  
 
 
 module.exports = router;
