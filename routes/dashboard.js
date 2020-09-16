@@ -102,17 +102,12 @@ router.post('/trainee', (req, res, next)=>{
   User.findByIdAndUpdate(req.user._id, 
     {
       gender: req.body.gender, 
-      level: req.body.level}, 
+      level: req.body.level
+    }, 
       {new:true})
   .then(user => console.log(user))
   .catch(err => console.log(err))
 })
-
-
-
-
-
-
 
 
 
