@@ -4,7 +4,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const Plan = require('../models/Plan');
-const flash = require('flash')
+const flash = require('connect-flash')
 
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
@@ -73,10 +73,6 @@ router.post('/signup', (req, res, next) => {
 // });
 
 
-// router.use(function(req, res, next){
-//   res.locals.error = req.flash('incorrect credentials');
-//   next()
-// })
 
 
 router.post(
@@ -90,7 +86,6 @@ router.post(
 )
 
 router.get('/logout', (req, res) => {
-  // logout the user using passport
   req.logout();
   res.redirect('/');
 })
