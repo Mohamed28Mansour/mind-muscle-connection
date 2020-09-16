@@ -1,6 +1,6 @@
 <div class="container">
   <h2>Welcome {{user.username}}</h2>
-  <form action="/trainee" method="POST">
+  {{!-- <form action="/trainee" method="POST">
     
     <h3>Add your gender:</h3>
     
@@ -12,9 +12,9 @@
     
     <input type="radio" name="level" value="beginner">Beginner
 
-    <input type="radio" name="level" value="intermediate">Intermediate
+        <input type="radio" name="level" value="intermediate">Intermediate
 
-    <input type="radio" name="level" value="advance">Advanced
+    <input type="radio" name="level" value="advanced">Advanced
 
     <h3>Choose your Program</h3>
 
@@ -23,6 +23,21 @@
     <button id="sixDays">6 Days Program</button>
 
     <button>Submit</button>
-  </form>
+  </form> --}}
+  <h3>Your Programs</h3>
+  {{#if user.programs}}
+  {{#each user.programs}}
+    <a href="/userProgram/{{_id}}">{{title}}</a>
+  {{/each}}
+  {{else}}
+  <p>select one program</p>
+  {{/if}}
+</div>
+
+<div>
+  <h3>Programs</h3>
+  {{#each allPrograms}}
+  <a href="/program/{{_id}}">{{title}}</a>
+  {{/each}}
 </div>
 

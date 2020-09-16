@@ -12,15 +12,14 @@ router.get('/dashboard', async (req, res, next) => {
   User.findById(req.user._id).populate("programs")
   .then(user => {
     // let plans = await Plan.find();
-    if(req.user.role == "Trainer") {
-      console.log(user)
-      res.render('dashboard/trainer', {user: user});
-    } else if(req.user.role == "Trainee") {
-      res.render('dashboard/trainee', {user: user});
-    }
-  })
-  Plan.find().then(plansFromDB => {
-    res.render('plans', {plans : plansFromDB})
+    Plan.find().then(allPrograms => {
+      if(req.user.role == "Trainer") {
+        console.log(user)
+        res.render('dashboard/trainer', {user: user});
+      } else if(req.user.role == "Trainee") {
+        res.render('dashboard/trainee', {user: user, allPrograms: allPrograms});
+      }
+    })
   })
 });
 
@@ -99,31 +98,48 @@ router.post('/plan/day3', async (req, res, next) => {
   }).catch(err => console.log(err))
 })
 
+// router.post('/trainee', (req, res, next) => {
+//   User.findByIdAndUpdate(req.user._id,
+//     {
+//       gender: req.body.gender,
+//       level: req.body.level},
+//       {new: true})
+//       .then(user => console.log(user))
+//       .catch(err => next(err))
+// })
 
-router.post('/trainee', (req, res, next)=>{
-  console.log(req.body)
-  User.findByIdAndUpdate(req.user._id, 
-    {
-      gender: req.body.gender, 
-      level: req.body.level
-    }, 
-      {new:true})
-  .then(user => console.log(user))
-  .catch(err => console.log(err))
+router.get('/userProgram/:id', (req, res, next)=>{
+  // console.log(req.params.id);
+  const id = req.params.id;
+  User.findById(req.user._id).populate("programs").then(user => {
+    let program = user.programs.find(prog => prog._id == req.params.id)
+    console.log(user)
+    res.render("dashboard/showUserPlan", { planInfo: program})
+  })
+  .catch(err => {
+    next(err)
+  })
 })
-
-
 
 router.get('/program/:id', (req, res, next)=>{
   console.log(req.params.id);
   const id = req.params.id;
   Plan.findById(id).populate('day1').populate('day2').populate('day3')
   .then(planInfo => {
-    console.log("this is planInfo",planInfo);
     res.render('dashboard/showPlan',{planInfo})
   })
   .catch(err => {
     next(err)
+  })
+})
+
+router.post("/selectprogram/:planId", (req, res, next) => {
+  Plan.findById(req.params.planId).populate('day1').populate('day2').populate('day3').then(program => {
+    console.log(program, "program");
+    User.findByIdAndUpdate(req.user._id, {$push: {programs: program}}, {new: true}).then(user => {
+      console.log(user)
+      res.redirect("/dashboard")
+    })
   })
 })
 
