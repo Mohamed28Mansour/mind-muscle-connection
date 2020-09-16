@@ -8,6 +8,8 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+const flash = require('connect-flash')
+
 
 
 mongoose
@@ -103,7 +105,7 @@ app.use(passport.session());
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
-
+app.use(flash());
 
 const index = require('./routes/index');
 app.use('/', index);
@@ -113,5 +115,7 @@ app.use('/', auth);
 
 const dashboard = require('./routes/dashboard');
 app.use('/', dashboard);
+
+
 
 module.exports = app;
