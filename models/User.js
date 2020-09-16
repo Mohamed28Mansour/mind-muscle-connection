@@ -14,7 +14,7 @@ const userSchema = new Schema ({
   programs: [
     {
     type: Schema.Types.ObjectId,
-    ref: "Program"
+    ref: "Plan"
     }
   ],
   exercises: [
