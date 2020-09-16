@@ -19,6 +19,9 @@ router.get('/dashboard', async (req, res, next) => {
       res.render('dashboard/trainee', {user: user});
     }
   })
+  Plan.find().then(plansFromDB => {
+    res.render('plans', {plans : plansFromDB})
+  })
 });
 
 router.get('/plan/day1', (req, res, next) => {
