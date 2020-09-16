@@ -73,10 +73,10 @@ router.post('/signup', (req, res, next) => {
 // });
 
 
-router.use(function(req, res, next){
-  res.locals.error = req.flash('incorrect credentials');
-  next()
-})
+// router.use(function(req, res, next){
+//   res.locals.error = req.flash('incorrect credentials');
+//   next()
+// })
 
 
 router.post(
@@ -84,7 +84,7 @@ router.post(
   passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/login',
-    failureFlash: true,
+    // failureFlash: true,
     passReqToCallback: true
   })
 )

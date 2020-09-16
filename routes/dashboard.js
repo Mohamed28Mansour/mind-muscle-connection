@@ -8,10 +8,12 @@ const Exercise = require('../models/Exercise');
 
 
 
-router.get('/dashboard', (req, res, next) => {
+router.get('/dashboard', async (req, res, next) => {
   User.findById(req.user._id).populate("programs")
   .then(user => {
+    // let plans = await Plan.find();
     if(req.user.role == "Trainer") {
+      console.log(user)
       res.render('dashboard/trainer', {user: user});
     } else if(req.user.role == "Trainee") {
       res.render('dashboard/trainee', {user: user});
@@ -47,7 +49,10 @@ router.post('/plan/day1', async (req, res, next) => {
     title: planName,
     day1: exerciseIds
   }).then(plan => {
-    res.redirect('/plan/day2')
+    User.findByIdAndUpdate(req.user._id, {$push: {programs: plan._id}}).then(user => { //adding id of the created plan for the users
+
+      res.redirect('/plan/day2')
+    })
   }).catch(err => console.log(err)
   )
 })
@@ -94,10 +99,10 @@ router.post('/plan/day3', async (req, res, next) => {
 router.get('/program/:id', (req, res, next)=>{
   console.log(req.params.id);
   const id = req.params.id;
-  Plan.findById(id).populate('exercise')
+  Plan.findById(id).populate('day1').populate('day2').populate('day3')
   .then(planInfo => {
-    console.log(planInfo);
-    res.render('dashboard/showPlan', planInfo)
+    console.log("this is planInfo",planInfo);
+    res.render('dashboard/showPlan',{planInfo})
   })
   .catch(err => {
     next(err)
