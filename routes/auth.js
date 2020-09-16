@@ -11,7 +11,7 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('auth/login');
+  res.render('auth/login', {message: req.flash("error")});
 });
 
 router.post('/signup', (req, res, next) => {
@@ -84,7 +84,7 @@ router.post(
   passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/login',
-    // failureFlash: true,
+    failureFlash: true,
     passReqToCallback: true
   })
 )

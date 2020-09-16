@@ -96,6 +96,26 @@ router.post('/plan/day3', async (req, res, next) => {
   }).catch(err => console.log(err))
 })
 
+
+router.post('/trainee', (req, res, next)=>{
+  console.log(req.body)
+  User.findByIdAndUpdate(req.user._id, 
+    {
+      gender: req.body.gender, 
+      level: req.body.level}, 
+      {new:true})
+  .then(user => console.log(user))
+  .catch(err => console.log(err))
+})
+
+
+
+
+
+
+
+
+
 router.get('/program/:id', (req, res, next)=>{
   console.log(req.params.id);
   const id = req.params.id;
