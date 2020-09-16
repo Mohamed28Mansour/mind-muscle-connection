@@ -35,5 +35,17 @@ router.post('/plans', (req, res, next) => {
   })
 })  
 
+router.get('/program/:id', (req, res, next)=>{
+  console.log(req.params.id);
+  const id = req.params.id;
+  Plan.findById(id).populate('exercise')
+  .then(planInfo => {
+    console.log(planInfo);
+    res.render('dashboard/showPlan', planInfo)
+  })
+  .catch(err => {
+    next(err)
+  })
+})
 
 module.exports = router;
