@@ -91,5 +91,17 @@ router.post('/plan/day3', async (req, res, next) => {
   }).catch(err => console.log(err))
 })
 
+router.get('/program/:id', (req, res, next)=>{
+  console.log(req.params.id);
+  const id = req.params.id;
+  Plan.findById(id).populate('exercise')
+  .then(planInfo => {
+    console.log(planInfo);
+    res.render('dashboard/showPlan', planInfo)
+  })
+  .catch(err => {
+    next(err)
+  })
+})
 
 module.exports = router;

@@ -1,6 +1,28 @@
-<h2>Choose a Program</h2>
+<div class="container">
+  <h2>Welcome {{user.username}}</h2>
+  <form action="/trainee" method="POST">
+    
+    <h3>Add your gender:</h3>
+    
+    <input type="radio" name="gender">Female
 
-<button id="program-3-days">3 Days Program</button>
+    <input type="radio" name="gender">Male
 
+    <h3>Add your Level:</h3>
+    
+    <button type="button">Beginner</button> 
 
-<button id="program-6-days">6 Days Program</button>
+    <button type="button">Intermediate</button> 
+
+    <button type="button">Advance</button> 
+
+    <h3>Choose your Program</h3>
+
+    <button id="threeDays">3 Days Program</button>
+
+    <button id="sixDays">6 Days Program</button>
+
+    <button>Submit</button>
+  </form>
+</div>
+

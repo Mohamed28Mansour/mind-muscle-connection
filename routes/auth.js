@@ -4,7 +4,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 const Plan = require('../models/Plan');
-
+const flash = require('flash')
 
 router.get('/signup', (req, res, next) => {
   res.render('auth/signup');
@@ -72,11 +72,19 @@ router.post('/signup', (req, res, next) => {
 //   })
 // });
 
+
+router.use(function(req, res, next){
+  res.locals.error = req.flash('incorrect credentials');
+  next()
+})
+
+
 router.post(
   '/login',
   passport.authenticate('local', {
     successRedirect: '/dashboard',
     failureRedirect: '/login',
+    failureFlash: true,
     passReqToCallback: true
   })
 )
