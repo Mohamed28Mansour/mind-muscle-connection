@@ -1,11 +1,25 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const planSchema = new Schema ({
-  planName:  String,
-  img: String,
-  reps1: String,
-  reps2: String,
-  reps3: String
+  title: String,
+  day1:  [
+    {
+    type: Schema.Types.ObjectId,
+    ref: "Exercise"
+    }
+  ],
+  day2:  [
+    {
+    type: Schema.Types.ObjectId,
+    ref: "Exercise"
+    }
+  ],
+  day3:  [
+    {
+    type: Schema.Types.ObjectId,
+    ref: "Exercise"
+    }
+  ],
 })
 
 const Plan = mongoose.model('Plan', planSchema)
