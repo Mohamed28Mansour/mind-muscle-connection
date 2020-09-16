@@ -19,9 +19,6 @@ router.get('/dashboard', async (req, res, next) => {
       res.render('dashboard/trainee', {user: user});
     }
   })
-  Plan.find().then(plansFromDB => {
-    res.render('plans', {plans : plansFromDB})
-  })
 });
 
 router.get('/plan/day1', (req, res, next) => {
@@ -104,7 +101,6 @@ router.get('/program/:id', (req, res, next)=>{
   const id = req.params.id;
   Plan.findById(id).populate('day1').populate('day2').populate('day3')
   .then(planInfo => {
-    console.log("this is planInfo",planInfo);
     res.render('dashboard/showPlan',{planInfo})
   })
   .catch(err => {
