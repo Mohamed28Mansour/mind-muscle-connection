@@ -109,49 +109,44 @@ router.post('/plan/day3', async (req, res, next) => {
 // })
 
 router.get('/userProgram/:id', (req, res, next)=>{
+  // console.log(req.params.id);
   const id = req.params.id;
-  User.findById(req.user._id).then(user => {
-    // console.log(user.userPrograms, "userPrograms")
-    // let program = user.userPrograms.find(prog => prog._id == req.params.id)
-    // console.log(program, "program user")
-    const plan = {}
-    plan.day1 = {}
-    plan.day2 = {}
-    plan.day3 = {}
-    plan.day1.exercises = []
-    plan.day2.exercises = []
-    plan.day3.exercises = []
-    user.userPrograms.forEach(p => {
-      const day1 = p.day1;
-      const day2 = p.day2;
-      const day3 = p.day3;
-        // const exercise = await Exercise.findById(id);
-      const res1 = day1.map(async id => {
-        return await Exercise.findById(id);
-        // plan.day1.exercises.push(exercise)
-        
-      })
-      const res2 = day2.map(async id => {
-        return  await Exercise.findById(id);
-        // console.log(exercise)
-        // plan.day2.exercises.push(exercise)
+  User.findById(req.user._id).populate("programs").then(user => {
+    const plan = {}	
+    plan.day1 = {}	
+    plan.day2 = {}	
+    plan.day3 = {}	
+    plan.day1.exercises = []	
+    plan.day2.exercises = []	
+    plan.day3.exercises = []	
+    user.userPrograms.forEach(p => {	
+      const day1 = p.day1;	
+      const day2 = p.day2;	
+      const day3 = p.day3;	
+        // const exercise = await Exercise.findById(id);	
+      const res1 = day1.map(async id => {	
+        return await Exercise.findById(id);	
+        // plan.day1.exercises.push(exercise)	
 
-      })
-      const res3 = day3.forEach(async id => {
-        return await Exercise.findById(id);
-        // console.log(exercise)
-        // plan.day3.exercises.push(exercise)
+      })	
+      const res2 = day2.map(async id => {	
+        return  await Exercise.findById(id);	
+        // console.log(exercise)	
+        // plan.day2.exercises.push(exercise)	
 
-      })
-      Promise.all(res1, res2, res3).then(program => {
-        console.log(program)
-        res.render("dashboard/showUserPlan", { planInfo: program})
-      })
+      })	
+      const res3 = day3.forEach(async id => {	
+        return await Exercise.findById(id);	
+        // console.log(exercise)	
+        // plan.day3.exercises.push(exercise)	
+
+      })	
+      Promise.all(res1, res2, res3).then(program => {	
+        console.log(program)	
+        res.render("dashboard/showUserPlan", { planInfo: program})	
+      })	
 
     })
-    // console.log(user.userPrograms)
-
-    // res.render("dashboard/showUserPlan", { planInfo: program})
   })
   .catch(err => {
     next(err)
@@ -162,7 +157,6 @@ router.get('/program/:id', (req, res, next)=>{
   const id = req.params.id;
   Plan.findById(id).populate('day1').populate('day2').populate('day3')
   .then(planInfo => {
-    // console.log("this is plan info", planInfo)
     res.render('dashboard/showPlan',{planInfo})
   })
   .catch(err => {
@@ -171,9 +165,9 @@ router.get('/program/:id', (req, res, next)=>{
 })
 
 router.post("/selectprogram/:planId", (req, res, next) => {
-  Plan.findById(req.params.planId).populate('day1').populate('day2').populate('day3').then((program) => {
+  Plan.findById(req.params.planId).populate('day1').populate('day2').populate('day3').then(program => {
     let userProgram = program
-    console.log(userProgram.day1, "program");
+    console.log(userProgram.day1, "program");	    
     User.findByIdAndUpdate(req.user._id, {$push: {userPrograms: userProgram}}, {new: true}).then(user => {
       console.log(user)
       res.redirect("/dashboard")
@@ -183,7 +177,6 @@ router.post("/selectprogram/:planId", (req, res, next) => {
 
 
 router.get('/program/delete/:planId', (req, res, next) => {
-  console.log(req.params)
   const id = req.params.planId;
   Plan.findByIdAndDelete(id)
   .then(() => {
@@ -193,5 +186,15 @@ router.get('/program/delete/:planId', (req, res, next) => {
     next(err)
   })
 })
+
+// router.post('/program/edit/:planId', (req, res, next) => {
+//   const {planName, exercises, reps1, reps2} = req.body;
+//   const id = req.params.planId;
+//   Plan.findByIdAndUpdate(id, {
+//     title: planName,
+
+//   })
+
+// })
 
 module.exports = router;

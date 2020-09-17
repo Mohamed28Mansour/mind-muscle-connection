@@ -1,0 +1,69 @@
+html,	
+body {	
+padding: 0;	
+  margin: 0;	
+}	
+
+.trainer {	
+  background-color: black; }	
+
+* {	
+  box-sizing: border-box; }	
+
+.pt {	
+  display: flex;	
+  max-width: 50%;	
+  height: auto;	
+  align-items: flex-end; }	
+
+a {	
+  text-decoration: none;	
+  color: white; }	
+
+.greeting {	
+  font-size: 7em;	
+  text-align: center;	
+  padding-top: 50px;	
+  color: red; }	
+
+.plans {	
+  font-size: 3em;	
+  color: red;	
+  text-decoration: underline; }	
+
+.plan {	
+  font-size: xx-large;	
+  color: white; }	
+
+.header {	
+  display: flex;	
+  justify-content: space-between; }	
+
+nav {	
+  background-color: lightslategray;	
+  width: 100%;	
+  display: flex;	
+  justify-content: flex-end;	
+  padding: 20px 40px; }	
+
+nav a {	
+  margin-right: 20px;	
+  font-size: 20px;	
+  color: white;	
+  text-decoration: none; }	
+
+nav a:hover {	
+  text-decoration: underline; }	
+
+.logo-container {	
+  background-color: black;	
+  padding-left: 225px; }	
+
+.logo {	
+  display: flex;	
+  max-width: auto;	
+  height: 750px;	
+  align-items: center; }	
+
+.container-signUp {	
+  background-color: black; }
