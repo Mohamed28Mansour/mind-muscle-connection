@@ -1,6 +1,18 @@
-<form action="/updateProgram/{{planInfo._id}}" method="post">
-{{#with planInfo}}
+
+{{#each planInfo}}
+  <h3>{{exerciseName}}</h3>
+  <p>{{reps1}}</p>
+  <p>{{reps2}}</p>
+
+{{/each}}
+
+
+{{!-- <form action="/updateProgram/{{planInfo._id}}" method="POST">
+
+  
+  
   <p>{{title}}</p>
+  <p>{{day1}}</p>
   {{#each day1}}
   <p>{{this}}</p>
   <p>{{exerciseName}}</p>
@@ -13,11 +25,11 @@
   {{#each day3}}
   <p>{{exerciseName}}</p>
   <input type="Number" name={{exerciseName}} value={{weight}}>
-{{/each}}
-{{/with}}
+{{/each}} 
+
 
 
 <button>Save</button>
-</form>
+</form> --}}
 
 <a href="/dashboard">go to dashboard</a>
