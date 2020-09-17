@@ -159,7 +159,6 @@ router.get('/userProgram/:id', (req, res, next)=>{
 })
 
 router.get('/program/:id', (req, res, next)=>{
-  // console.log(req.params.id);
   const id = req.params.id;
   Plan.findById(id).populate('day1').populate('day2').populate('day3')
   .then(planInfo => {
@@ -179,6 +178,19 @@ router.post("/selectprogram/:planId", (req, res, next) => {
       console.log(user)
       res.redirect("/dashboard")
     })
+  })
+})
+
+
+router.get('/program/delete/:planId', (req, res, next) => {
+  console.log(req.params)
+  const id = req.params.planId;
+  Plan.findByIdAndDelete(id)
+  .then(() => {
+  res.redirect('/dashboard')
+  })
+  .catch(err => {
+    next(err)
   })
 })
 

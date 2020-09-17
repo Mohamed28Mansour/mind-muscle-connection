@@ -1,16 +1,44 @@
+html,
 body {
-  padding: 0;
+padding: 0;
   margin: 0;
-  /* width: 100vh;
-  height: 100vh; */ }
+}
+
+.trainer {
+  background-color: black; }
 
 * {
   box-sizing: border-box; }
 
-a {
-  color: #00B7FF; }
+.pt {
+  display: flex;
+  max-width: 50%;
+  height: auto;
+  align-items: flex-end; }
 
-/*# sourceMappingURL=style.css.map */
+a {
+  text-decoration: none;
+  color: white; }
+
+.greeting {
+  font-size: 7em;
+  text-align: center;
+  padding-top: 50px;
+  color: red; }
+
+.plans {
+  font-size: 3em;
+  color: red;
+  text-decoration: underline; }
+
+.plan {
+  font-size: xx-large;
+  color: white; }
+
+.header {
+  display: flex;
+  justify-content: space-between; }
+
 nav {
   background-color: lightslategray;
   width: 100%;
@@ -40,4 +68,3 @@ nav a:hover {
 .container-signUp {
   background-color: black; }
 
-/*# sourceMappingURL=style.css.map */
