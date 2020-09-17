@@ -144,7 +144,6 @@ router.post("/selectprogram/:planId", (req, res, next) => {
 
 
 router.get('/program/delete/:planId', (req, res, next) => {
-  console.log(req.params)
   const id = req.params.planId;
   Plan.findByIdAndDelete(id)
   .then(() => {
@@ -154,5 +153,15 @@ router.get('/program/delete/:planId', (req, res, next) => {
     next(err)
   })
 })
+
+// router.post('/program/edit/:planId', (req, res, next) => {
+//   const {planName, exercises, reps1, reps2} = req.body;
+//   const id = req.params.planId;
+//   Plan.findByIdAndUpdate(id, {
+//     title: planName,
+
+//   })
+
+// })
 
 module.exports = router;

@@ -1,22 +1,27 @@
-<form action="/signup" method="POST">
+<div class="container-signUp">
 
-<label for="username">Username:</label>
-<input type="text" name="username" id="username">
+  <form action="/signup" method="POST">
 
-<label for="password">Password:</label>
-<input type="password" name="password" id="password">
+  <label for="username">Username:</label>
+  <input type="text" name="username" id="username">
 
-<label for="role">Select a Role:</label>
+  <label for="password">Password:</label>
+  <input type="password" name="password" id="password">
 
-<select name="role" id="role">
-  <option value="Trainer">Trainer</option>
-  <option value="Trainee">Trainee</option>
-</select>
+  <label for="role">Select a Role:</label>
 
-<button type="submit">Sign up</button>
+  <select name="role" id="role">
+    <option value="Trainer">Trainer</option>
+    <option value="Trainee">Trainee</option>
+  </select>
 
-</form>
+  <button type="submit">Sign up</button>
 
-{{#if message}}
-<p style="color: red;">{{message}}</p>
-{{/if}}
+  </form>
+
+  {{#if message}}
+  <p style="color: red;">{{message}}</p>
+  {{/if}}
+
+
+</div>
