@@ -1,18 +1,56 @@
+html,
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;  
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.trainer{
+  background-color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.pt {
+  display: flex;
+  max-width: 50%;
+  height: auto;
+  align-items: flex-end;
 }
 
 a {
-  color: #00B7FF;
+  text-decoration: none;
+  color: white;
+}
+ 
+
+  .greeting {
+    font-size: 7em;
+    text-align: center;
+    padding-top: 50px;
+    color: red;
+  }
+
+.plans {
+  font-size: 3em;
+  color: red;
+  text-decoration: underline;
+}  
+
+.plan {
+  font-size: xx-large;
+  color: white;
 }
 
-// .addPlan {
-//   display: flex;
-//   width: 100vw;
-// }
+.header {
+  display: flex;
+  justify-content: space-between;
+}
 
-// .addPlan div {
-//   display: flex;
-//   width: 100vw;
-// }
+.btn {}

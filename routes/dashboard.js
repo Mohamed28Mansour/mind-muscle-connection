@@ -142,4 +142,17 @@ router.post("/selectprogram/:planId", (req, res, next) => {
   })
 })
 
+
+router.get('/program/delete/:planId', (req, res, next) => {
+  console.log(req.params)
+  const id = req.params.planId;
+  Plan.findByIdAndDelete(id)
+  .then(() => {
+  res.redirect('/dashboard')
+  })
+  .catch(err => {
+    next(err)
+  })
+})
+
 module.exports = router;
