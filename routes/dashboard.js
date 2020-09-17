@@ -13,7 +13,6 @@ router.get('/dashboard', async (req, res, next) => {
   .then(user => {
     // let plans = await Plan.find();
     if(req.user.role == "Trainer") {
-      console.log(user)
       res.render('dashboard/trainer', {user: user});
     } else if(req.user.role == "Trainee") {
       res.render('dashboard/trainee', {user: user});
@@ -107,7 +106,6 @@ router.post('/trainee', (req, res, next) => {
 })
 
 router.get('/program/:id', (req, res, next)=>{
-  console.log(req.params.id);
   const id = req.params.id;
   Plan.findById(id).populate('day1').populate('day2').populate('day3')
   .then(planInfo => {
@@ -116,6 +114,11 @@ router.get('/program/:id', (req, res, next)=>{
   .catch(err => {
     next(err)
   })
+})
+
+router.get('/plans/edit/:planId', (req, res, next) => {
+  const id = req.params.planId;
+  console.log(id)
 })
 
 module.exports = router;
