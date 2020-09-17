@@ -21,16 +21,7 @@ const userSchema = new Schema ({
     ref: "Plan"
     }
   ],
-  exercises: [
-    {
-      id: {
-      type: Schema.Types.ObjectId,
-      ref: "Exercise"
-      },
-      weight: Number,
-      repetition: Number
-    }
-  ],
+  userPrograms: [],
 })
 
 const User = mongoose.model('User', userSchema)

@@ -4,9 +4,16 @@ const planSchema = new Schema ({
   title: String,
   day1:  [
     {
-    type: Schema.Types.ObjectId,
-    ref: "Exercise"
+    exerciseName:  String,
+    img: String,
+    reps1: String,
+    reps2: String,
+    reps3: String,
+    weight: {
+      type: Number,
+      default: 0
     }
+  }
   ],
   day2:  [
     {
