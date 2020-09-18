@@ -1,17 +1,21 @@
-<form action="/login" method="POST">
+<div class="container-logIn">
+  <form class="form-signIn" action="/login" method="POST">
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" class="input-login">
+  </div>
 
-<label for="username">Username:</label>
-<input type="text" name="username" id="username">
+  <div>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" class="input-login">
+  </div>
 
-<label for="password">Password:</label>
-<input type="password" name="password" id="password">
+  <div class="btn-container">
+    <button type="submit" class="btn-login">Log in</button>
+  </div>
+  </form>
 
-</select>
-
-<button type="submit">Log in</button>
-
-</form>
-
-{{#if message}}
-<p style="color: red;">{{message}}</p>
-{{/if}}
+  {{#if message}}
+  <p style="color: red;">{{message}}</p>
+  {{/if}}
+</div>

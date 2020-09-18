@@ -1,16 +1,17 @@
-
-{{#each planInfo}}
-  <h3>{{exerciseName}}</h3>
-  <p>{{reps1}}</p>
-  <p>{{reps2}}</p>
-
-{{/each}}
-
-
-{{!-- <form action="/updateProgram/{{planInfo._id}}" method="POST">
-
+<div class="planInfo-container">
   
-  
+  {{#each planInfo}}
+    <h3 class="header-programs">{{exerciseName}}</h3>
+    <p class="paragraph-info">{{reps1}}</p>
+    <p class="paragraph-info">{{reps2}}</p>
+
+  {{/each}}
+  <a href="/dashboard" class="linksTrainee">Back to your programs</a>
+
+</div>
+
+
+{{!-- <form action="/updateProgram/{{planInfo._id}}" method="POST">  
   <p>{{title}}</p>
   <p>{{day1}}</p>
   {{#each day1}}
@@ -26,10 +27,6 @@
   <p>{{exerciseName}}</p>
   <input type="Number" name={{exerciseName}} value={{weight}}>
 {{/each}} 
-
-
-
 <button>Save</button>
 </form> --}}
 
-<a href="/dashboard">go to dashboard</a>

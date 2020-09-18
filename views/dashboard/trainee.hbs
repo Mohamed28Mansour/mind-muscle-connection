@@ -1,45 +1,22 @@
-<div class="container">
-  <h2>Welcome {{user.username}}</h2>
-  {{!-- <form action="/trainee" method="POST">
+<div class="container-trainee">
+  
+  <div class="programsCard">
+    <h2 id="userName">Welcome {{user.username}}</h2>
+    <h3 class="header-programs">Your Programs</h3>
+    {{#if user.userPrograms}}
+    {{#each user.userPrograms}}
+      <a class="linksTrainee" href="/userProgram/{{_id}}">{{title}}</a>
+    {{/each}}
+    {{else}}
+      <p>select one program</p>
+    {{/if}}
+
     
-    <h3>Add your gender:</h3>
-    
-    <input type="radio" name="gender" value="female">Female
-
-    <input type="radio" name="gender" value="male">Male
-
-    <h3>Add your Level:</h3>
-    
-    <input type="radio" name="level" value="beginner">Beginner
-
-        <input type="radio" name="level" value="intermediate">Intermediate
-
-    <input type="radio" name="level" value="advanced">Advanced
-
-    <h3>Choose your Program</h3>
-
-    <button id="threeDays">3 Days Program</button>
-
-    <button id="sixDays">6 Days Program</button>
-
-    <button>Submit</button>
-  </form> --}}
-  <h3>Your Programs</h3>
-  {{#if user.userPrograms}}
-  {{#each user.userPrograms}}
-    <a href="/userProgram/{{_id}}">{{title}}</a>
-  {{/each}}
-  {{else}}
-  <p>select one program</p>
-  {{/if}}
-</div>
-
-<div>
-  <h3>Programs</h3>
-  {{#each allPrograms}}
-  <a href="/program/{{_id}}">{{title}}</a>
-  {{/each}}
-
-  <button><a href="/logout">Log Out</a></button>
+    <h3 class="header-programs">Choose a Program</h3>
+    {{#each allPrograms}}
+      <a class="linksTrainee" href="/program/{{_id}}">{{title}}</a>
+    {{/each}}
+    {{!-- <button><a href="/logout">Log Out</a></button> --}}
+  </div>
 </div>
 

@@ -67,7 +67,148 @@ nav a:hover {
   align-items: center; }
 
 .container-signUp {
-  background-color: black; }
+  background-image: url("https://res.cloudinary.com/dwhml6ftw/image/upload/v1600342258/movies-example/brain-on-exercise_qfixsh.jpg");
+  height: 750px;
+  background-color: black;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column; }
+
+.form-container {
+  font-size: 30px;
+  height: 50%;
+  max-width: 50%;
+  margin-left: 10%;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: baseline; }
+
+.inputSignUp {
+  border-radius: 2px;
+  border: none;
+  height: 25px;
+  background-color: grey; }
+
+.select-role {
+  width: 100%;
+  display: flex; }
+
+select {
+  width: 150px;
+  margin-left: 20px;
+  background-color: grey;
+  color: white;
+  border-radius: 2px; }
+
+.btn-container {
+  width: 100%; }
+
+.btn-signUp {
+  width: 50%;
+  height: 100%;
+  background-color: grey;
+  color: white;
+  letter-spacing: 4px;
+  font-size: large;
+  border-radius: 4px;
+  border: none; }
+
+.btn-signUp:hover {
+  text-decoration: underline; }
+
+.container-logIn {
+  background-image: url("https://activmotionbar.com/wp-content/uploads/2016/04/nervous-system.jpg");
+  height: 750px;
+  background-color: black;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column; }
+
+.form-signIn {
+  font-size: 30px;
+  height: 50%;
+  max-width: 50%;
+  margin-left: 10%;
+  margin-top: 1%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  align-items: baseline; }
+
+.input-login {
+  border-radius: 2px;
+  border: none;
+  height: 25px;
+  background-color: grey; }
+
+.btn-login {
+  width: 40%;
+  height: 100%;
+  background-color: grey;
+  color: white;
+  letter-spacing: 4px;
+  font-size: large;
+  border-radius: 4px;
+  border: none; }
+
+.btn-login:hover {
+  text-decoration: underline; }
+
+.container-trainee {
+  background-image: url("https://blog.iafstore.com/static/img/posts/image/b860.jpg");
+  height: 750px;
+  background-color: black;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.programsCard {
+  display: flex;
+  align-items: center;
+  flex-direction: column; }
+
+#userName {
+  font-size: 5rem;
+  text-align: center; }
+
+.header-programs {
+  font-size: 3rem;
+  text-align: center; }
+
+.linksTrainee {
+  font-size: 2rem;
+  color: #8bc6fc; }
+
+.planInfo-container {
+  background-image: url("https://generationiron.com/wp-content/uploads/2019/05/6-Ways-To-Improve-Your-Mind-Muscle-Connection.jpg");
+  height: 750px;
+  background-color: black;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
+.paragraph-info {
+  font-size: 20px; }
+
+.planName {
+  background-image: url("https://skinnyms.com/wp-content/uploads/2013/03/5-Steps-to-Create-Mind-Muscle-Connection.jpg");
+  height: 750px;
+  background-color: black;
+  background-size: cover;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
 
 .btn {
   background-color: #312f2f;
