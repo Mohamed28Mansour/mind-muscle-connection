@@ -1,19 +1,24 @@
-<h1>Welcome {{user.username}}</h1>
-
-<h2>Plans:</h2>
+<div class="trainer">
+  <div class="header">
+<h1 class="greeting"> {{user.username}}</h1>
+  <img class="pt" src="https://www.aspata.com/wp-content/uploads/2014/05/Personal-Training.jpg" alt="pt image">
+</div>
+<h2 class="plans">Plans:</h2>
 
 {{#if user.programs}}
 
 {{#each user.programs}}
-  <p>
+  <p class="plan">
     <a href="/program/{{_id}}">{{title}}</a>
   </p>
-  <button><a href="/plans/edit/{{_id}}"></a>Edit Plan</button>
-  <button><a href="/plans/delete/{{_id}}"></a>Delete Plan</button>
+  {{!--<button class="btn"><a href="/program/edit/{{_id}}"></a>Edit Plan</button>--}}
+  <button class="btn"><a href="/program/delete/{{_id}}">Delete Plan</a></button>
 {{/each}}
 {{else}}
-  <p>No plans available</p>
+  <p class="no-plan">No plans available</p>
 {{/if}}
 
-<button><a href="/plan/day1">Create a plan</a></button>
-<button><a href="/logout">Log Out</a></button>
+<button class="btn"><a href="/plan/day1">Create a plan</a></button>
+<button class="btn"><a href="/logout">Log Out</a></button>
+
+</div>

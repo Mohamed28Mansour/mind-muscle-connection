@@ -1,18 +1,15 @@
-body {
-  padding: 0;
-  margin: 0;
-  /* width: 100vh;
-  height: 100vh; */
- }
+html,	
+body {	
+padding: 0;	
+  margin: 0;	
+}	
 
-* {
-  box-sizing: border-box;
-}
+.trainer {	
+  background-color: black; }	
 
-a {
-  color: #00B7FF; }
+* {	
+  box-sizing: border-box; }	
 
-/*# sourceMappingURL=style.css.map */
 
 nav{
   background-color: black;
@@ -22,28 +19,66 @@ nav{
   padding: 20px 40px;
 }
 
-nav a{
-  margin-right: 20px;
-  font-size: 20px;
-  color: white;
-  text-decoration: none;
-}
+.pt {	
+  display: flex;	
+  max-width: 50%;	
+  height: auto;	
+  align-items: flex-end;
+  padding-top: 20px; 
+}	
 
-nav a:hover {
-  text-decoration: underline;
-}
+a {	
+  text-decoration: none;	
+  color: white; }	
 
-.logo-container {
-  background-color: black;
-  padding-left: 225px;
-}
+.greeting {	
+  font-size: 7em;	
+  text-align: center;	
+  padding-top: 50px;	
+  color: red; 
+  padding-left: 50px;
+}	
 
-.logo {
-  display: flex;
-  max-width: auto;
-  height: 750px;
-  align-items: center;
-}
+.plans {	
+  font-size: 3em;	
+  color: red;	
+  text-decoration: underline; }	
+
+.plan {	
+  font-size: xx-large;	
+  color: white; }	
+
+.header {	
+  display: flex;	
+  justify-content: space-between; }	
+
+nav {	
+  background-color: black;	
+  width: 100%;	
+  display: flex;	
+  justify-content: flex-end;	
+  padding: 20px 40px; }	
+
+nav a {	
+  margin-right: 20px;	
+  font-size: 20px;	
+  color: white;	
+  text-decoration: none; 
+}	
+
+nav a:hover {	
+  text-decoration: underline; }	
+
+.logo-container {	
+  background-color: black;	
+  padding-left: 225px; }	
+
+.logo {	
+  display: flex;	
+  max-width: auto;	
+  height: 750px;	
+  align-items: center; }	
+
 
 .container-signUp{
   // background-color: black;
@@ -216,6 +251,9 @@ select{
 }
 
 
-
-
+.btn {
+  background-color: rgb(49, 47, 47);
+  border-radius: 30%;
+  width: 200px;
+}
 

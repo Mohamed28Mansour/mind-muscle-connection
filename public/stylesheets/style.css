@@ -1,16 +1,45 @@
+html,
 body {
   padding: 0;
-  margin: 0;
-  /* width: 100vh;
-  height: 100vh; */ }
+  margin: 0; }
+
+.trainer {
+  background-color: black; }
 
 * {
   box-sizing: border-box; }
 
-a {
-  color: #00B7FF; }
+.pt {
+  display: flex;
+  max-width: 50%;
+  height: auto;
+  align-items: flex-end;
+  padding-top: 20px; }
 
-/*# sourceMappingURL=style.css.map */
+a {
+  text-decoration: none;
+  color: white; }
+
+.greeting {
+  font-size: 7em;
+  text-align: center;
+  padding-top: 50px;
+  color: red;
+  padding-left: 50px; }
+
+.plans {
+  font-size: 3em;
+  color: red;
+  text-decoration: underline; }
+
+.plan {
+  font-size: xx-large;
+  color: white; }
+
+.header {
+  display: flex;
+  justify-content: space-between; }
+
 nav {
   background-color: black;
   width: 100%;
@@ -180,5 +209,10 @@ select {
   display: flex;
   flex-direction: column;
   align-items: center; }
+
+.btn {
+  background-color: #312f2f;
+  border-radius: 30%;
+  width: 200px; }
 
 /*# sourceMappingURL=style.css.map */

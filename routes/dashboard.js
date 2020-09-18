@@ -109,6 +109,7 @@ router.post('/plan/day3', async (req, res, next) => {
 // })
 
 router.get('/userProgram/:id', (req, res, next)=>{
+  // console.log(req.params.id);
   const id = req.params.id;
   User.findById(req.user._id).then(user => {
     // console.log(user.userPrograms, "userPrograms")
@@ -147,11 +148,7 @@ router.get('/userProgram/:id', (req, res, next)=>{
         console.log(program)
         res.render("dashboard/showUserPlan", { user: req.user, planInfo: program})
       })
-
     })
-    // console.log(user.userPrograms)
-
-    // res.render("dashboard/showUserPlan", { planInfo: program})
   })
   .catch(err => {
     next(err)
@@ -159,7 +156,6 @@ router.get('/userProgram/:id', (req, res, next)=>{
 })
 
 router.get('/program/:id', (req, res, next)=>{
-  // console.log(req.params.id);
   const id = req.params.id;
   Plan.findById(id).populate('day1').populate('day2').populate('day3')
   .then(planInfo => {
@@ -172,14 +168,36 @@ router.get('/program/:id', (req, res, next)=>{
 })
 
 router.post("/selectprogram/:planId", (req, res, next) => {
-  Plan.findById(req.params.planId).populate('day1').populate('day2').populate('day3').then((program) => {
+  Plan.findById(req.params.planId).populate('day1').populate('day2').populate('day3').then(program => {
     let userProgram = program
-    console.log(userProgram.day1, "program");
+    console.log(userProgram.day1, "program");	    
     User.findByIdAndUpdate(req.user._id, {$push: {userPrograms: userProgram}}, {new: true}).then(user => {
       console.log(user)
       res.redirect("/dashboard")
     })
   })
 })
+
+
+router.get('/program/delete/:planId', (req, res, next) => {
+  const id = req.params.planId;
+  Plan.findByIdAndDelete(id)
+  .then(() => {
+  res.redirect('/dashboard')
+  })
+  .catch(err => {
+    next(err)
+  })
+})
+
+// router.post('/program/edit/:planId', (req, res, next) => {
+//   const {planName, exercises, reps1, reps2} = req.body;
+//   const id = req.params.planId;
+//   Plan.findByIdAndUpdate(id, {
+//     title: planName,
+
+//   })
+
+// })
 
 module.exports = router;
