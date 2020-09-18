@@ -1,25 +1,30 @@
 <div class="container-signUp">
 
-  <form action="/signup" method="POST">
+  <form class="form-container" action="/signup" method="POST">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" class="inputSignUp">
+      </div>
 
-  <label for="username">Username:</label>
-  <input type="text" name="username" id="username">
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" class="inputSignUp">
+      </div>  
 
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password">
+      <div class="select-role">
+        <label for="role">Select a Role:</label>
+        <select name="role" id="role">
+          <option value="Trainer">Trainer</option>
+          <option value="Trainee">Trainee</option>
+        </select>
+      </div>
 
-  <label for="role">Select a Role:</label>
-
-  <select name="role" id="role">
-    <option value="Trainer">Trainer</option>
-    <option value="Trainee">Trainee</option>
-  </select>
-
-  <button type="submit">Sign up</button>
-
+      <div class="btn-container">
+        <button type="submit" class="btn-signUp">Sign up</button>
+      </div>
   </form>
 
-  {{#if message}}
+{{#if message}}
   <p style="color: red;">{{message}}</p>
   {{/if}}
 

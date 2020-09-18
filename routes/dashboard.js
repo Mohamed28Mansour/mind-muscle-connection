@@ -145,7 +145,7 @@ router.get('/userProgram/:id', (req, res, next)=>{
       })
       Promise.all(res1, res2, res3).then(program => {
         console.log(program)
-        res.render("dashboard/showUserPlan", { planInfo: program})
+        res.render("dashboard/showUserPlan", { user: req.user, planInfo: program})
       })
 
     })
@@ -164,7 +164,7 @@ router.get('/program/:id', (req, res, next)=>{
   Plan.findById(id).populate('day1').populate('day2').populate('day3')
   .then(planInfo => {
     // console.log("this is plan info", planInfo)
-    res.render('dashboard/showPlan',{planInfo})
+    res.render('dashboard/showPlan',{user: req.user,planInfo})
   })
   .catch(err => {
     next(err)
